@@ -1,0 +1,475 @@
+@import "tailwindcss";
+
+/* ══════════════════════════════════════════════════════════════
+   AskRoo design tokens — Tailwind v4 CSS-first config (§3)
+   Dark-first, pure-black canvas. One warm ochre accent.
+   ══════════════════════════════════════════════════════════════ */
+
+@theme {
+  /* ── Surfaces ── */
+  --color-void: #000000; /* page background */
+  --color-ink: #05060a; /* card background */
+  --color-elev-1: #0a0c12; /* hover surface */
+  --color-elev-2: #10131c; /* raised / active */
+
+  /* ── Text ── */
+  --color-bright: #f7f8f8;
+  --color-dim: #a1a8b3;
+  --color-faint: #6b7280; /* metadata only — fails AA on void for body */
+
+  /* ── Signature accent — "Roo ochre" ── */
+  --color-accent-100: #fae3c6; /* pale tint — gradient text endpoints */
+  --color-accent-300: #f0b36b; /* light — hover text, small type on black */
+  --color-accent-400: #e08a38; /* PRIMARY — buttons, glow, focus rings, logo */
+  --color-accent-500: #c2701f; /* mid */
+  --color-accent-600: #9a5510; /* deep */
+
+  /* ── Signal — gradient depth only, never a fill ── */
+  --color-signal-400: #5b6b9e;
+  --color-signal-500: #3e4a73;
+  --color-signal-600: #28304d;
+
+  /* ── Hairline system (mixed from white, never solid gray) ── */
+  --color-hairline: color-mix(in oklab, #fff 9%, transparent);
+  --color-hairline-strong: color-mix(in oklab, #fff 16%, transparent);
+  --color-glass: color-mix(in oklab, #fff 3.5%, transparent);
+
+  /* ── Fonts (wired from next/font in layout.tsx) ── */
+  --font-sans: var(--font-geist-sans), ui-sans-serif, system-ui, sans-serif;
+  --font-mono: var(--font-geist-mono), ui-monospace, "SFMono-Regular", monospace;
+
+  /* ── Motion easing ── */
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-in-out-quart: cubic-bezier(0.76, 0, 0.24, 1);
+  --default-transition-timing-function: cubic-bezier(0.16, 1, 0.3, 1);
+
+  /* ── Fluid type scale (§3) ── */
+  --text-display-xl: clamp(3rem, 7vw, 6.5rem);
+  --text-display-xl--line-height: 0.95;
+  --text-display-xl--letter-spacing: -0.035em;
+  --text-display-xl--font-weight: 500;
+
+  --text-display-l: clamp(2.25rem, 4.5vw, 3.75rem);
+  --text-display-l--line-height: 1;
+  --text-display-l--letter-spacing: -0.03em;
+  --text-display-l--font-weight: 500;
+
+  --text-lede: clamp(1.0625rem, 1.6vw, 1.375rem);
+  --text-lede--line-height: 1.55;
+  --text-lede--letter-spacing: -0.01em;
+  --text-lede--font-weight: 400;
+
+  --text-eyebrow: 0.6875rem;
+  --text-eyebrow--line-height: 1;
+  --text-eyebrow--letter-spacing: 0.18em;
+  --text-eyebrow--font-weight: 500;
+
+  --text-caption: 0.75rem;
+  --text-caption--line-height: 1.5;
+  --text-caption--letter-spacing: 0.04em;
+  --text-caption--font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Base layer — global rules (§3)
+   ══════════════════════════════════════════════════════════════ */
+
+@layer base {
+  :root {
+    color-scheme: dark;
+  }
+
+  html {
+    scroll-behavior: smooth;
+    -webkit-text-size-adjust: 100%;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    html {
+      scroll-behavior: auto;
+    }
+  }
+
+  body {
+    background-color: var(--color-void);
+    color: var(--color-bright);
+    font-family: var(--font-sans);
+    font-feature-settings: "cv01", "cv03", "ss03";
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+  }
+
+  /* Selection → ochre background, void text */
+  ::selection {
+    background-color: var(--color-accent-400);
+    color: var(--color-void);
+  }
+
+  /* Focus — visible ochre ring on every interactive element */
+  :focus-visible {
+    outline: 2px solid var(--color-accent-400);
+    outline-offset: 3px;
+    border-radius: 4px;
+  }
+
+  /* Custom scrollbar — hairline thumb on void */
+  * {
+    scrollbar-width: thin;
+    scrollbar-color: color-mix(in oklab, #fff 14%, transparent) transparent;
+  }
+  ::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+  }
+  ::-webkit-scrollbar-track {
+    background: transparent;
+  }
+  ::-webkit-scrollbar-thumb {
+    background-color: color-mix(in oklab, #fff 12%, transparent);
+    border-radius: 999px;
+    border: 3px solid transparent;
+    background-clip: content-box;
+  }
+  ::-webkit-scrollbar-thumb:hover {
+    background-color: color-mix(in oklab, #fff 22%, transparent);
+    background-clip: content-box;
+  }
+
+  /* Collapse all motion under reduced-motion preference */
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+
+  /* Headings inherit tight display feel by default weight */
+  h1,
+  h2,
+  h3,
+  h4 {
+    font-weight: 500;
+    text-wrap: balance;
+  }
+
+  p {
+    text-wrap: pretty;
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Custom utilities (§3)
+   ══════════════════════════════════════════════════════════════ */
+
+/* Display type: tight tracking, optical sizing. Pair with a text-* size. */
+@utility display {
+  letter-spacing: -0.035em;
+  line-height: 0.95;
+  font-weight: 500;
+  font-optical-sizing: auto;
+}
+
+/* Eyebrow: mono, tracked-out, uppercase, ochre. The "label" voice. */
+@utility eyebrow {
+  font-family: var(--font-mono);
+  font-size: 0.6875rem;
+  line-height: 1;
+  letter-spacing: 0.18em;
+  font-weight: 500;
+  text-transform: uppercase;
+  color: var(--color-accent-400);
+}
+
+/* Hairline card: top-light gradient over ink, hairline border,
+   inset top highlight, soft outer shadow. */
+@utility panel {
+  position: relative;
+  background-image: linear-gradient(
+    to bottom,
+    color-mix(in oklab, #fff 4%, transparent),
+    transparent 42%
+  );
+  background-color: var(--color-ink);
+  border: 1px solid var(--color-hairline);
+  border-radius: 1rem;
+  box-shadow:
+    inset 0 1px 0 0 color-mix(in oklab, #fff 6%, transparent),
+    0 1px 2px 0 rgba(0, 0, 0, 0.5),
+    0 24px 48px -24px rgba(0, 0, 0, 0.65);
+}
+
+/* Bright-to-ochre text gradient (for the final hero line). */
+@utility text-gradient {
+  background-image: linear-gradient(
+    100deg,
+    var(--color-bright) 0%,
+    var(--color-bright) 38%,
+    var(--color-accent-300) 100%
+  );
+  background-clip: text;
+  -webkit-background-clip: text;
+  color: transparent;
+  -webkit-text-fill-color: transparent;
+}
+
+/* Faint 72px grid, radial-masked so it fades toward the edges. */
+@utility grid-veil {
+  background-image:
+    linear-gradient(
+      to right,
+      color-mix(in oklab, #fff 4%, transparent) 1px,
+      transparent 1px
+    ),
+    linear-gradient(
+      to bottom,
+      color-mix(in oklab, #fff 4%, transparent) 1px,
+      transparent 1px
+    );
+  background-size: 72px 72px;
+  background-position: center center;
+  -webkit-mask-image: radial-gradient(
+    ellipse 80% 70% at 50% 42%,
+    #000 0%,
+    transparent 78%
+  );
+  mask-image: radial-gradient(
+    ellipse 80% 70% at 50% 42%,
+    #000 0%,
+    transparent 78%
+  );
+}
+
+/* The citation chip (§5) — the site's signature element.
+   A receipt line: mono, tight, recessed, ochre-bordered. */
+@utility chip-cite {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.4rem;
+  font-family: var(--font-mono);
+  font-size: 0.75rem;
+  line-height: 1.2;
+  letter-spacing: 0.01em;
+  color: var(--color-accent-300);
+  background-color: color-mix(in oklab, var(--color-accent-500) 12%, transparent);
+  border: 1px solid var(--color-accent-600);
+  border-radius: 4px;
+  padding: 0.3rem 0.55rem;
+}
+
+/* Utility: hide visually but keep for assistive tech (skip link, sr-only). */
+@utility sr-only {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  padding: 0;
+  margin: -1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
+  white-space: nowrap;
+  border-width: 0;
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Reveal / Stagger — the "armed" scroll-reveal pattern (§7, §15).
+
+   Content is fully visible by default. JS only sets data-reveal="armed"
+   on elements that START BELOW THE FOLD and only when motion is allowed —
+   so no-JS visitors, crawlers, already-visible elements and
+   reduced-motion users never see hidden content. The IntersectionObserver
+   then flips it to "shown", and CSS handles the transition.
+   ══════════════════════════════════════════════════════════════ */
+
+@layer components {
+  /* Single element reveal */
+  [data-reveal="armed"] {
+    opacity: 0;
+    transform: translateY(24px);
+    filter: blur(8px);
+  }
+  [data-reveal="shown"] {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    transition:
+      opacity 0.7s var(--ease-out-expo),
+      transform 0.7s var(--ease-out-expo),
+      filter 0.7s var(--ease-out-expo);
+  }
+
+  /* Staggered children: parent carries data-reveal, children data-stagger */
+  [data-reveal="armed"] [data-stagger] {
+    opacity: 0;
+    transform: translateY(20px);
+    filter: blur(6px);
+  }
+  [data-reveal="shown"] [data-stagger] {
+    opacity: 1;
+    transform: none;
+    filter: blur(0);
+    transition:
+      opacity 0.6s var(--ease-out-expo),
+      transform 0.6s var(--ease-out-expo),
+      filter 0.6s var(--ease-out-expo);
+    transition-delay: calc(0.05s + var(--stagger-i, 0) * 0.08s);
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-reveal],
+    [data-reveal="armed"],
+    [data-reveal="shown"],
+    [data-reveal] [data-stagger] {
+      opacity: 1 !important;
+      transform: none !important;
+      filter: none !important;
+      transition: none !important;
+    }
+  }
+
+  /* Hero entrance — CSS-only so it works without JS. Base state is the
+     final state, so if the animation is removed (reduced motion) the
+     content is simply visible. */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(16px);
+    }
+    to {
+      opacity: 1;
+      transform: none;
+    }
+  }
+
+  .animate-rise {
+    animation: rise 0.9s var(--ease-out-expo) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-rise {
+      animation: none !important;
+    }
+  }
+
+  /* Infinite marquee — track holds two identical halves; -50% loops it. */
+  @keyframes marquee {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      transform: translateX(-50%);
+    }
+  }
+
+  .animate-marquee {
+    animation: marquee 46s linear infinite;
+  }
+
+  .marquee-mask {
+    -webkit-mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+    mask-image: linear-gradient(
+      to right,
+      transparent,
+      #000 7%,
+      #000 93%,
+      transparent
+    );
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-marquee {
+      animation-play-state: paused;
+    }
+  }
+
+  /* Generic fade-in — used by the WebGL hero as it mounts. */
+  @keyframes fade {
+    from {
+      opacity: 0;
+    }
+    to {
+      opacity: 1;
+    }
+  }
+
+  .animate-fade {
+    animation: fade 1s var(--ease-out-expo) both;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    .animate-fade {
+      animation: none !important;
+    }
+  }
+}
+
+/* ══════════════════════════════════════════════════════════════
+   Long-form prose (legal, about copy)
+   ══════════════════════════════════════════════════════════════ */
+@layer components {
+  .prose-roo {
+    color: var(--color-dim);
+    line-height: 1.75;
+  }
+  .prose-roo h2 {
+    color: var(--color-bright);
+    font-size: 1.375rem;
+    font-weight: 500;
+    letter-spacing: -0.01em;
+    margin-top: 2.75rem;
+    margin-bottom: 0.75rem;
+  }
+  .prose-roo h3 {
+    color: var(--color-bright);
+    font-size: 1.0625rem;
+    font-weight: 500;
+    margin-top: 1.75rem;
+    margin-bottom: 0.5rem;
+  }
+  .prose-roo p {
+    margin-bottom: 1rem;
+  }
+  .prose-roo a {
+    color: var(--color-accent-300);
+    text-decoration: underline;
+    text-underline-offset: 3px;
+  }
+  .prose-roo strong {
+    color: var(--color-bright);
+    font-weight: 500;
+  }
+  .prose-roo ul {
+    margin: 0.5rem 0 1.25rem;
+    padding-left: 0;
+    list-style: none;
+  }
+  .prose-roo li {
+    position: relative;
+    margin-bottom: 0.5rem;
+    padding-left: 1.15rem;
+  }
+  .prose-roo li::before {
+    content: "";
+    position: absolute;
+    left: 0;
+    top: 0.7em;
+    width: 5px;
+    height: 5px;
+    border-radius: 9999px;
+    background: var(--color-accent-500);
+  }
+  .prose-roo hr {
+    border: 0;
+    border-top: 1px solid var(--color-hairline);
+    margin: 2.25rem 0;
+  }
+}
