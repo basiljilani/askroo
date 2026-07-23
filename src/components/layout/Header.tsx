@@ -91,7 +91,7 @@ export function Header() {
           "transition-colors duration-300",
           scrolled || open
             ? "border-b border-hairline bg-void/80 backdrop-blur-xl"
-            : "border-b border-transparent bg-transparent",
+            : "border-b border-transparent bg-gradient-to-b from-void/70 via-void/30 to-transparent",
         )}
       >
         <Container>
@@ -117,10 +117,10 @@ export function Header() {
                     href={item.href}
                     aria-current={active ? "page" : undefined}
                     className={cn(
-                      "relative rounded-full px-3.5 py-2 text-sm transition-colors",
+                      "relative rounded-full px-3.5 py-2 text-sm font-medium transition-colors",
                       active
                         ? "text-bright"
-                        : "text-dim hover:text-bright",
+                        : "text-bright/75 hover:text-bright",
                     )}
                   >
                     {active ? (

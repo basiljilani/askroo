@@ -58,11 +58,13 @@ export default function Page() {
 
           <h2>Billing</h2>
           <p>
-            Paid tiers are charged in US dollars (USD) through the Shopify
-            Billing API and appear on your Shopify invoice. If you bring your own
-            LLM key (BYOK), you pay your LLM provider directly for usage on that
-            key, separately from any {siteConfig.name} charge. Taxes are handled
-            according to Shopify&apos;s billing process.
+            During the beta, {siteConfig.name} is provided free of charge for an
+            introductory period of three months, and no payment method is
+            required. If and when paid plans are introduced, we will give you
+            clear notice beforehand; any future charges would be handled through
+            the Shopify Billing API and appear on your Shopify invoice. If you
+            choose to bring your own LLM key (BYOK), you pay your LLM provider
+            directly for usage on that key.
           </p>
 
           <h2>Acceptable use</h2>

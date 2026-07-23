@@ -42,8 +42,7 @@ export const siteConfig = {
   ],
   contact: {
     email: "connect@askroo.io",
-    // Full registered address before launch.
-    address: "Sydney, NSW, Australia",
+    address: "8 Hadenfeld Ave, Macquarie University, New South Wales 2109, Australia",
   },
   /** ABN placeholder — replace with the registered number before launch. */
   abn: "00 000 000 000",
@@ -60,10 +59,9 @@ export type SiteConfig = typeof siteConfig;
 /** Primary header navigation. */
 export const primaryNav: NavLink[] = [
   { label: "Product", href: "/product" },
-  { label: "How it works", href: "/how-it-works" },
-  { label: "Pricing", href: "/pricing" },
+  { label: "Learn", href: "/how-it-works" },
+  { label: "Beta", href: "/beta" },
   { label: "About", href: "/about" },
-  { label: "Contact", href: "/contact" },
 ];
 
 /** The one conversion action, repeated site-wide. */
@@ -78,8 +76,8 @@ export const footerNav: NavGroup[] = [
     title: "Product",
     links: [
       { label: "Capabilities", href: "/product" },
-      { label: "How it works", href: "/how-it-works" },
-      { label: "Pricing", href: "/pricing" },
+      { label: "Learn", href: "/how-it-works" },
+      { label: "Beta", href: "/beta" },
       { label: "Sources", href: "/sources" },
     ],
   },

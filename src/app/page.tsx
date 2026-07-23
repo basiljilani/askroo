@@ -5,7 +5,7 @@ import { Metrics } from "@/components/sections/Metrics";
 import { CapabilitiesGrid } from "@/components/sections/CapabilitiesGrid";
 import { HowItWorks } from "@/components/sections/HowItWorks";
 import { Industries } from "@/components/sections/Industries";
-import { Pricing } from "@/components/sections/Pricing";
+import { Beta } from "@/components/sections/Beta";
 import { FoundingCohort } from "@/components/sections/FoundingCohort";
 import { Faq } from "@/components/sections/Faq";
 import { Cta } from "@/components/sections/Cta";
@@ -23,7 +23,7 @@ export default function Home() {
       <CapabilitiesGrid />
       <HowItWorks />
       <Industries />
-      <Pricing />
+      <Beta />
       <FoundingCohort />
       <Faq />
       <Cta />

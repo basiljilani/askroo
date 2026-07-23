@@ -1,10 +1,10 @@
 import { cn } from "@/lib/utils";
-import { ROO_INNER, ROO_TRANSFORM } from "@/lib/logo";
+import { MARK_BUBBLE, MARK_DOTS } from "@/lib/logo";
 
 /**
- * The Roo mark: a clean, friendly kangaroo cut out of an ochre tile.
- * Geometry lives in @/lib/logo so every rendering (favicon, apple icon,
- * OG image, in-page logo) stays in sync.
+ * The AskRoo mark: a clean chat bubble with a typing indicator, cut into
+ * an ochre tile. Geometry lives in @/lib/logo so every rendering (favicon,
+ * apple icon, OG image, in-page logo) stays in sync.
  */
 export function RooMark({ className }: { className?: string }) {
   return (
@@ -23,11 +23,11 @@ export function RooMark({ className }: { className?: string }) {
       />
       <g
         fill="var(--color-void)"
-        stroke="var(--color-void)"
-        strokeLinecap="round"
-        strokeLinejoin="round"
-        transform={ROO_TRANSFORM}
-        dangerouslySetInnerHTML={{ __html: ROO_INNER }}
+        dangerouslySetInnerHTML={{ __html: MARK_BUBBLE }}
+      />
+      <g
+        fill="var(--color-accent-400)"
+        dangerouslySetInnerHTML={{ __html: MARK_DOTS }}
       />
     </svg>
   );

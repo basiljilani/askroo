@@ -2,7 +2,6 @@ import { Container } from "@/components/ui/Container";
 import { Button } from "@/components/ui/Button";
 import { ArrowRight } from "@/components/ui/ArrowRight";
 import { Eyebrow } from "@/components/ui/SectionHeading";
-import { AnswerBubble } from "@/components/ui/AnswerBubble";
 import { HeroGradient } from "@/components/hero/HeroGradient";
 
 export function Hero({ background }: { background?: React.ReactNode }) {
@@ -32,27 +31,24 @@ export function Hero({ background }: { background?: React.ReactNode }) {
               className="display animate-rise mt-6 text-display-xl text-bright"
               style={{ animationDelay: "60ms" }}
             >
-              It reads your orders.
+              Roo reads the room.
               <br />
-              <span className="text-gradient">Then it answers.</span>
+              <span className="text-gradient">Then opens its mouth.</span>
             </h1>
 
             <p
-              className="animate-rise mx-auto mt-6 max-w-xl text-lede text-dim"
+              className="animate-rise mx-auto mt-6 max-w-2xl text-lede text-dim"
               style={{ animationDelay: "140ms" }}
             >
-              The AI support agent for Shopify shoppers. It answers
-              where-is-my-order, returns and product questions from your live
-              store data, and shows the source for every answer.
+              It&rsquo;s 3am. You&rsquo;re asleep. Roo isn&rsquo;t. It reads your
+              live order data first, answers second, and shows exactly which
+              order it checked.
             </p>
 
             <div
-              className="animate-rise mt-9 flex flex-col items-center justify-center gap-3 sm:flex-row"
+              className="animate-rise mt-9 flex justify-center"
               style={{ animationDelay: "220ms" }}
             >
-              <Button href="/contact" size="lg" className="w-full sm:w-auto">
-                Join the beta
-              </Button>
               <Button
                 href="/how-it-works"
                 variant="secondary"
@@ -63,19 +59,6 @@ export function Hero({ background }: { background?: React.ReactNode }) {
                 <ArrowRight />
               </Button>
             </div>
-          </div>
-
-          {/* The thesis, stated as a demonstration rather than a claim. */}
-          <div
-            className="animate-rise mx-auto mt-14 w-full max-w-xl"
-            style={{ animationDelay: "320ms" }}
-          >
-            <AnswerBubble
-              question="Hi, where's my order? It's been a few days."
-              answer="Your order shipped Tuesday and it's with Australia Post now. Tracking says it's out for delivery in Newtown today."
-              source="order #1042"
-              latency="fetched 0.4s ago"
-            />
           </div>
         </div>
       </Container>

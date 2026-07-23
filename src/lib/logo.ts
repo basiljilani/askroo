@@ -2,16 +2,16 @@
  * The AskRoo mark, defined once so the React component, favicon, apple
  * icon and OG image never drift.
  *
- * A clean, friendly kangaroo silhouette — leaning forward, tail sweeping
- * back, long hind foot — set as a dark cut-out in the ochre tile. Flat,
- * no glow, and legible down to a favicon.
+ * A clean, professional chat bubble with a typing indicator — the iconic
+ * support-chat glyph — cut into the ochre tile. Flat, no glow, legible at
+ * a favicon.
  */
 
-/** The kangaroo shapes, colourless — they inherit fill/stroke from the parent <g>. */
-export const ROO_INNER = `<path d="M40 66 C 32 74, 22 81, 13 85" fill="none" stroke-width="12"/><path d="M49 66 L52 83 L75 85" fill="none" stroke-width="12"/><path d="M64 30 C 60 25, 53 25, 49 30 C 44 36, 41 45, 40 54 C 39 61, 42 67, 49 68 C 56 69, 62 64, 64 57 C 66 50, 67 42, 66 37 C 65.5 34, 65 32, 64 30 Z"/><path d="M60 46 L70 50" fill="none" stroke-width="5"/><circle cx="63" cy="25" r="10"/><ellipse cx="75" cy="27" rx="8" ry="5" transform="rotate(8 75 27)"/><path d="M58 18 L51 5" fill="none" stroke-width="6"/><path d="M65 16 L64 2" fill="none" stroke-width="6"/>`;
+/** The speech bubble body + tail (fill inherited from the parent <g>). */
+export const MARK_BUBBLE = `<rect x="23" y="26" width="54" height="39" rx="15.5"/><path d="M34 60 L28 75 L50 62 Z"/>`;
 
-/** Positions the kangaroo, with padding, inside the 100×100 tile. */
-export const ROO_TRANSFORM = "translate(11 12) scale(0.8)";
+/** The three typing dots (rendered in the tile colour, so they read as holes). */
+export const MARK_DOTS = `<circle cx="37" cy="45.5" r="5.2"/><circle cx="50" cy="45.5" r="5.2"/><circle cx="63" cy="45.5" r="5.2"/>`;
 
 /** Self-contained SVG string (hex colours) for static / Satori contexts. */
 export function markSvg(opts?: {
@@ -22,7 +22,7 @@ export function markSvg(opts?: {
   const tile = opts?.tile ?? "#e08a38";
   const glyph = opts?.glyph ?? "#08090d";
   const rx = opts?.rx ?? 26;
-  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="3" y="3" width="94" height="94" rx="${rx}" fill="${tile}"/><g fill="${glyph}" stroke="${glyph}" stroke-linecap="round" stroke-linejoin="round" transform="${ROO_TRANSFORM}">${ROO_INNER}</g></svg>`;
+  return `<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100"><rect x="3" y="3" width="94" height="94" rx="${rx}" fill="${tile}"/><g fill="${glyph}">${MARK_BUBBLE}</g><g fill="${tile}">${MARK_DOTS}</g></svg>`;
 }
 
 /** The mark as a data URI, for <img> in Satori (OG image, apple icon). */

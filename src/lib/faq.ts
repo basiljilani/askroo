@@ -43,7 +43,7 @@ export const faqs: FaqItem[] = [
     id: "models",
     question: "Which AI models does it use?",
     answer:
-      "Six providers, with a supported-models list published from our eval results rather than picked by brand. On paid tiers you can bring your own key; it's encrypted at rest, validated on entry, and never logged.",
+      "Six providers, with a supported-models list published from our eval results rather than picked by brand. You can bring your own key; it's encrypted at rest, validated on entry, and never logged.",
   },
   {
     id: "unknown",
@@ -70,9 +70,9 @@ export const faqs: FaqItem[] = [
   },
   {
     id: "cost",
-    question: "How much will the AI usage cost me?",
+    question: "What does it cost during the beta?",
     answer:
-      "It's metered per conversation and modelled into the tiers, so there's no surprise bill. If you'd rather pay your provider directly, bring your own key and there's no per-conversation cap from us.",
+      "Nothing. The first three months are free — the whole thing, not a stripped-down trial — while AskRoo is in beta. No card up front, no surprise invoice. We'll be upfront about what comes after well before it arrives.",
   },
   {
     id: "australia",

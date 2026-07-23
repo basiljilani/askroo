@@ -273,7 +273,6 @@ export function getCapability(slug: string): Capability | undefined {
 export const interestOptions = [
   ...capabilities.map((c) => ({ value: c.slug, label: c.title })),
   { value: "beta", label: "Joining the beta" },
-  { value: "pricing", label: "Pricing" },
   { value: "other", label: "Something else" },
 ];
 

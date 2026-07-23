@@ -1,6 +1,5 @@
 import { siteConfig, absoluteUrl, socialLinks } from "./site";
 import { faqs } from "./faq";
-import { pricing } from "./pricing";
 
 /** Organization + WebSite graph for the root layout. */
 export function organizationGraph() {
@@ -19,8 +18,10 @@ export function organizationGraph() {
         sameAs: socialLinks.map((s) => s.href),
         address: {
           "@type": "PostalAddress",
-          addressLocality: "Sydney",
+          streetAddress: "8 Hadenfeld Ave",
+          addressLocality: "Macquarie University",
           addressRegion: "NSW",
+          postalCode: "2109",
           addressCountry: "AU",
         },
       },
@@ -50,18 +51,8 @@ export function faqGraph() {
   };
 }
 
-/** SoftwareApplication + offers for the pricing page. */
+/** SoftwareApplication schema. Pricing-free while AskRoo is in beta. */
 export function softwareApplicationGraph() {
-  const offers = pricing
-    .filter((t) => /^\$\d/.test(t.price))
-    .map((t) => ({
-      "@type": "Offer",
-      name: t.name,
-      price: t.price.replace(/[^0-9.]/g, ""),
-      priceCurrency: "USD",
-      category: t.conversations,
-    }));
-
   return {
     "@context": "https://schema.org",
     "@type": "SoftwareApplication",
@@ -70,15 +61,7 @@ export function softwareApplicationGraph() {
     applicationSubCategory: "Customer support",
     operatingSystem: "Web, Shopify",
     description: siteConfig.description,
-    url: absoluteUrl("/pricing"),
-    offers: {
-      "@type": "AggregateOffer",
-      priceCurrency: "USD",
-      lowPrice: "0",
-      highPrice: "79",
-      offerCount: String(offers.length),
-      offers,
-    },
+    url: absoluteUrl("/beta"),
     publisher: { "@id": absoluteUrl("/#organization") },
   };
 }

@@ -23,7 +23,8 @@ const geistMono = Geist_Mono({
 export const metadata: Metadata = {
   metadataBase: new URL(siteConfig.url),
   title: {
-    default: siteConfig.seoTitle,
+    // Browser tab shows just the brand; inner pages become "Page · AskRoo".
+    default: siteConfig.name,
     template: `%s · ${siteConfig.name}`,
   },
   description: siteConfig.description,
@@ -57,9 +58,6 @@ export const metadata: Metadata = {
     },
   },
   category: "technology",
-  icons: {
-    icon: [{ url: "/icon.svg", type: "image/svg+xml" }],
-  },
 };
 
 export const viewport: Viewport = {

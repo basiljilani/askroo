@@ -6,7 +6,7 @@ import { ArrowRight } from "@/components/ui/ArrowRight";
 
 const youGet = [
   "A direct line to the team building it, not a support queue",
-  "Founding pricing, locked for as long as you stay",
+  "Founding-member perks, locked in for as long as you stay",
   "Real influence on what gets built next",
 ];
 

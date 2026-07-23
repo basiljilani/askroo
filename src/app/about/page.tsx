@@ -1,6 +1,7 @@
 import { PageHeader } from "@/components/ui/PageHeader";
 import { Section } from "@/components/ui/Section";
 import { Cta } from "@/components/sections/Cta";
+import { Team } from "@/components/sections/Team";
 import { SourceRef } from "@/components/ui/SourceRef";
 import { buildMetadata } from "@/lib/metadata";
 
@@ -94,17 +95,7 @@ export default function AboutPage() {
         </p>
       </Block>
 
-      <Block eyebrow="Who's building it" title="A small team, close to the work.">
-        <p>
-          AskRoo is built by a small team in Sydney. Being early means you talk
-          to the people writing the code, not a support queue, and the roadmap
-          bends to what founding merchants actually need.
-        </p>
-        <p>
-          If that&rsquo;s the kind of vendor you want on a young but important
-          part of your store, the founding cohort is open.
-        </p>
-      </Block>
+      <Team />
 
       <Cta />
     </>
