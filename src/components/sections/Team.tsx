@@ -20,7 +20,7 @@ const founder: Member = {
 
 const team: Member[] = [
   {
-    name: "Eo Jin “Ginny” Lee",
+    name: "Eo Jin Lee",
     role: "Legal Counsel",
     initials: "GL",
     bio: "Ginny is a solicitor and a Macquarie University alum who keeps AskRoo's returns language on the right side of Australian Consumer Law. Early in her career and sharp with it — she reads the fine print so your shoppers never have to.",
@@ -32,7 +32,7 @@ const team: Member[] = [
     bio: "Emily runs people and culture, which mostly means she's the reason the team actually likes each other. Owns a sweet tooth the size of Sydney and bakes for every occasion, plus a few she invents. If something needs sorting, she's usually sorted it already.",
   },
   {
-    name: "Lachlan “Lachie” Dunne",
+    name: "Lachlan Dunne",
     role: "Engineering intern",
     initials: "LD",
     bio: "Lachie ships features between surf checks and swears the best ideas come from the water. The commit history is skeptical, but the ideas are good, so nobody argues.",
@@ -44,7 +44,7 @@ const team: Member[] = [
     bio: "Angus debugs by staring at the problem until it feels awkward and confesses. Powered by meat pies and a level of confidence the code doesn't always earn — yet.",
   },
   {
-    name: "Matilda “Tilly” Ryan",
+    name: "Matilda Ryan",
     role: "Design intern",
     initials: "TR",
     bio: "Tilly can spot the pixel that's one off from across the room. Keeps a running list of small things that annoy her, which has quietly become our best backlog.",
